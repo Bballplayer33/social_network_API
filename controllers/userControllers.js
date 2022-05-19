@@ -4,9 +4,9 @@ module.exports = {
   // Get all users
   getUsers(req, res) {
     User.find()
+      .select("-__v")
       .populate("friends")
       .populate("thoughts")
-      .select("-__v")
       .then((users) => {
         console.log(users);
         const userObj = {
